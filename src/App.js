@@ -15,32 +15,31 @@ function App() {
       .then((res) => res.json())
       .then((d) => setData(d))
   }
-  
-  const requestInterval = 300000
-  function test (){
-      
-      axios.get("http://192.168.2.22:5002/goldrate")
-        .then((res) => {
-          setData(res.data)
-          console.log('err', res.data)
-        })
-  
-        .catch((err) => {
-          console.log(err)
-        })
-      }
-  useEffect (()=>{
+
+
+  function test() {
+
+    axios.get("/goldrate")
+      .then((res) => {
+        setData(res.data)
+        console.log('err', res.data)
+      })
+
+      .catch((err) => {
+        console.log(err)
+      })
+  }
+  useEffect(() => {
     test()
-  },[])
-   
-      useInterval(
-        () => {
-            test();
-            // console.log("Interval Called");
-        },
-        requestInterval
-    )
-  return ( 
+  }, [])
+  
+
+  useInterval(() => {
+    test()
+    console.log("this function call after 15mins")
+  }, 900000);
+  
+  return (
 
 
     <div className="App">
@@ -51,37 +50,29 @@ function App() {
 
         <marquee className="marq">
           {data?.map((products) => {
-            return(
-             <div  className = 'tab'><span className='text'>{products.product_name} = RS.{products.amount}</span></div>
-            
+            return (
+              <div className='tab'><span className='text'>{products.product_name} = RS.{products.amount}</span></div>
+
             )
 
           })}
-       
+
           {/* <div className='tab2'><span className='text'>{product.product_name} {product.amount}</span></div> */}
           {/* <div className='tab'><span className='text'>{product.product_name} {product.amount}</span></div> */}
           {/* <div className='tab2'><spa className='text'>{product.product_name} {product.amount}</spa></div> */}
         </marquee>
-    
+
 
       </div>
-     
 
-<Tables/>
+
+      <Tables />
 
     </div>
   );
 }
 
 export default App;
-
-
-
-
-
-
-
-
 // const [user ,setUser] = useState([]);
 // useEffect (()=>
 // {
@@ -96,3 +87,10 @@ export default App;
 //         console.log(err)
 //     })
 // },[])
+
+
+
+
+
+
+
