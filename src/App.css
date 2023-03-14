@@ -36,36 +36,33 @@
     transform: rotate(360deg);
   }
 }
-.marquee{
+.marquee {
   display: flex;
 }
-.tab{
+.tab {
   background-color: goldenrod;
   display: inline-block;
   height: 5rem;
   border-right: 1px solid;
-  
 }
 
-.tab2{
- 
+.tab2 {
   display: inline-block;
-  background-color: #AA6C39;
+  background-color: #aa6c39;
   height: 5rem;
 }
-.text{
+.text {
   color: white;
-  font-size: 2rem;
+  font-size: 1.35rem;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 20px 20px 10px 0px;
   width: 100%;
-  
 }
-.marq{
+.marq {
   margin-top: 30px;
 }
-.ant-table-cell{
-  font-size: 40px;
+.ant-table-cell {
+  font-size:  1.35rem;
 }
