@@ -4,7 +4,9 @@ import './index.css';
 import axios from 'axios';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-axios.defaults.baseURL ="https://majesco-acs.smart-iam.com/kra-jewellers/"
+// axios.defaults.baseURL ="https://majesco-acs.smart-iam.com/kra-jewellers/"
+axios.defaults.baseURL ="http://localhost:5556"
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   

@@ -35,7 +35,7 @@ function App() {
             return (
               <div className="tab">
                 <span className="text">
-                  {products.product_name} = RS. {products.amount}
+                  {products.product_name} = ₹. {products.amount}
                 </span>
               </div>
             );
