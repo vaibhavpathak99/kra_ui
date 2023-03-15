@@ -31,11 +31,22 @@ function App() {
       <div className="marquee">
         <img src={kra} alt="" />
         <marquee className="marq" title="marquee">
+        <div className="tab">
+        <span className="text">
+        Sales Amount
+        </span>
+        <span className="text1">
+        Purchase Amount
+        </span>
+        </div>
           {data?.map((products) => {
             return (
               <div className="tab">
                 <span className="text">
-                  {products.product_name} = ₹. {products.amount}
+                {products.product_name} = ₹ {products.sale_amount}<br></br>
+                  </span>
+                <span className="text1">
+                   {products.product_name} = ₹ {products.purchase_amount}
                 </span>
               </div>
             );
