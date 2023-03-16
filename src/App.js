@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useInterval from "./useInterval";
 import Tables from "./Tables";
-
+import moment from "moment"
 function App() {
   const [data, setData] = useState([]);
   function test() {
@@ -26,32 +26,50 @@ function App() {
     test();
   }, 900000);
 
+  function addZeroes(num) {
+    // Cast as number
+    var num = Number(num);
+    // If not a number, return 0
+    if (isNaN(num)) {
+      return 0;
+    }
+    // If there is no decimal, or the decimal is less than 2 digits, toFixed
+    if (String(num).split(".").length < 2 || String(num).split(".")[1].length <= 2) {
+      num = num.toFixed(2);
+    }
+    // Return the number
+    return num;
+  }
+
   return (
     <div className="App">
       <div className="marquee">
-        <img src={kra} alt="" />
+        <img src={kra} alt="" style={{marginTop:"5px"}}/>
         <marquee className="marq" title="marquee">
-        <div className="tab">
-        <span className="text">
-        Sales Amount
-        </span>
-        <span className="text1">
-        Purchase Amount
-        </span>
-        </div>
+          <div className="tab">
+            <span className="text">
+              Sales Amount
+            </span>
+            <span className="text1">
+              Purchase Amount
+            </span>
+          </div>
           {data?.map((products) => {
             return (
               <div className="tab">
                 <span className="text">
-                {products.product_name} = ₹ {products.sale_amount}<br></br>
-                  </span>
+                  {products.product_name == "Silver 0" ? "Silver Article" : products.product_name == "silver 100" ? "Silver Bar" : products.product_name}T = {products.sale_amount == null ? "-" : <>₹ {addZeroes(products.sale_amount)}</>}
+                </span>
                 <span className="text1">
-                   {products.product_name} = ₹ {products.purchase_amount}
+                  {products.product_name == "Silver 0" ? "Silver Article" : products.product_name == "silver 100" ? "Silver Bar" : products.product_name}T  = {products.purchase_amount == null ? "-" : <>₹ {addZeroes(products.purchase_amount)}</>}
                 </span>
               </div>
             );
           })}
         </marquee>
+      </div>
+      <div style={{float:"right",marginRight:"5px",marginBottom:"5px",fontWeight:"bold"}}>
+          {moment(data[0]?.updated).format("yyyy-MM-DD hh:mm:ss A")}
       </div>
       <Tables />
     </div>

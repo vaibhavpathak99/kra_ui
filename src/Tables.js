@@ -58,6 +58,21 @@ function Tables() {
       });
   }, []);
 
+  function addZeroes(num) {
+    // Cast as number
+    var num = Number(num);
+    // If not a number, return 0
+    if (isNaN(num)) {
+        return 0;
+    }
+    // If there is no decimal, or the decimal is less than 2 digits, toFixed
+    if (String(num).split(".").length < 2 || String(num).split(".")[1].length<=2 ){
+        num = num.toFixed(2);
+    }
+    // Return the number
+    return num;
+}
+
   const columns = [
     {
       children: [
@@ -77,7 +92,7 @@ function Tables() {
           align: "center",
           render: (text, record) => (
             <>
-              { record.product_name=="Silver 0"?"Article":record.product_name=="silver 100"?"Bar":text?.split(" ")[1]} {text?.split(" ")[2]}
+              { record.product_name=="Silver 0"?"Article":record.product_name=="silver 100"?"Bar":<>{text?.split(" ")[1]} KT</>}
              </>
           ),
         },
@@ -93,7 +108,7 @@ function Tables() {
               key: "sale_amount",
               // width: 10,
               align: "center",
-              render:(text,record)=>(<>{"₹"} {text}</>)
+              render:(text,record)=>(<>{text==null?"-":<>{"₹"}{addZeroes(text)}</>}</>)
               
             },
             {
@@ -102,8 +117,8 @@ function Tables() {
               key: "purchase_amount",
               // width: 10,
               align: "center",
-              render:(text,record)=>(<>{"₹"}{text}</>)
-            }
+              render:(text,record)=>(<>{text==null?"-":<>{"₹"}{addZeroes(text)}</>}</>)
+              }
 
           ]
           
@@ -114,7 +129,7 @@ function Tables() {
 
   return (
     <div>
-      <Table columns={columns} dataSource={[...new Set(data)]} size="small" bordered/>
+      <Table columns={columns} dataSource={data} size="small" bordered/>
     </div>
   );
 }
