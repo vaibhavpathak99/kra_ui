@@ -44,7 +44,7 @@ function App() {
   return (
     <div className="App">
       <div className="marquee">
-        <img src={kra} alt="" style={{marginTop:"5px"}}/>
+        <img src={kra} alt="" style={{marginTop:"15px" , marginLeft:"10px", height:"120px"}}/>
         <marquee className="marq" title="marquee">
           <div className="tab">
             <span className="text">
@@ -68,10 +68,10 @@ function App() {
           })}
         </marquee>
       </div> 
-      <div style={{ float: "right", marginRight: "5px", marginBottom: "5px", fontWeight: "bold" }}>
+      <div style={{ float: "right", marginRight: "20px", marginBottom: "5px", fontWeight: "bold" }}>
         {moment(data[0]?.updated).format("yyyy-MM-DD hh:mm:ss A")}
       </div>
-      <Tables />
+      <Tables  />
     </div>
   );
 }

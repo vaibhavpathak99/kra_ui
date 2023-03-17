@@ -1,62 +1,28 @@
 import React, { useEffect, useState } from "react";
+import useInterval from "use-interval";
 import { Slider, Table } from "antd";
 import axios from "axios";
 function Tables() {
   const [data, setData] = useState([]);
-  useEffect(() => {
+
+  function getdata(){
     axios
       .get("/goldrate")
       .then((res) => {
         setData(res.data);
-        // let abc = []
-        // let flag;
-        // const data = res.data;
-        // let sales_price = "";
-        // let purchase_price = ""
-        // data.map((aa) => {
-        //   if (aa.rate_type === "sale") {
-        //     flag = true
-        //   }
-        //   else if (aa.rate_type === "purchase") {
-        //     flag = false
-        //   }
-        //   else {
-
-        //   }
-        //   if (flag == true) {
-        //     sales_price = aa.amount
-
-        //   }
-        //   else if (flag == false) {
-        //     purchase_price = aa.amount
-
-        //   }
-        //   else {
-
-        //   }
-
-
-        //   abc.push(
-        //     {
-        //       "product_name": aa.product_name,
-        //       "sale_price": sales_price,
-        //       "purchase_price": purchase_price,
-        //       // "amount":aa.amount
-        //     }
-        //   )
-
-        // })
-        
-        // let unique = [...new Set(abc)];
-        // // console.warn(abc)
-        // console.warn("unique data", unique)
-
-        // setData(unique)
       })
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  useEffect(() => {
+    getdata();
   }, []);
+
+    useInterval(() => {
+      getdata();
+  }, 900000);
 
   function addZeroes(num) {
     // Cast as number
@@ -136,7 +102,7 @@ const capitalizeWords = (str) => {
 
   return (
     <div>
-      <Table columns={columns} dataSource={data} size="small" bordered/>
+      <Table columns={columns} dataSource={data} size="small" bordered pagination={false}/>
     </div>
   );
 }
