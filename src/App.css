@@ -42,7 +42,7 @@
 .tab {
   background-color: goldenrod;
   display: inline-block;
-  height: 5rem;
+  height: 4.5rem;
   border-right: 1px solid;
 }
 
@@ -56,7 +56,7 @@
   font-size: 1.35rem;
   display: flex;
   align-items: left;
-  padding: 10px 20px 10px 5px;
+  padding: 5px 20px 10px 5px;
   width: 100%;
 }
 .text1 {
@@ -68,8 +68,8 @@
   width: 100%;
 }
 .marq {
-  margin-top: 2%;
+  margin-top: 34px;
 }
 .ant-table-cell {
-  font-size:  1rem;
+  font-size:  0.9rem;
 }

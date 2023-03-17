@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-distracting-elements */
 import "./App.css";
 import kra from "../src/kra.png";
 import { useEffect, useState } from "react";
@@ -44,8 +45,8 @@ function App() {
   return (
     <div className="App">
       <div className="marquee">
-        <img src={kra} alt="" style={{marginTop:"5px"}}/>
-        <marquee className="marq" title="marquee">
+        <img src={kra} alt="" style={{marginTop:"10px" , height:"120px" ,marginLeft:"10px"}}/>
+        <marquee className="marq" >
           <div className="tab">
             <span className="text">
               Sales Amount
@@ -68,7 +69,7 @@ function App() {
           })}
         </marquee>
       </div>
-      <div style={{float:"right",marginRight:"5px",marginBottom:"5px",fontWeight:"bold"}}>
+      <div style={{float:"right",marginRight:"20px",marginBottom:"5px",fontWeight:"bold"}}>
           {moment(data[0]?.updated).format("yyyy-MM-DD hh:mm:ss A")}
       </div>
       <Tables />

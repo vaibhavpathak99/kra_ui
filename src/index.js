@@ -5,7 +5,7 @@ import axios from 'axios';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 axios.defaults.baseURL ="https://majesco-acs.smart-iam.com/kra-jewellers/"
-// axios.defaults.baseURL ="http://localhost:5556"
+// axios.defaults.baseURL ="http://192.168.2.22:5002"
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
