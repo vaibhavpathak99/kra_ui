@@ -73,6 +73,13 @@ function Tables() {
     return num;
 }
 
+const capitalizeWords = (str) => {
+  return str
+    .toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+};
   const columns = [
     {
       children: [
@@ -82,7 +89,7 @@ function Tables() {
           key: "product_name",
           // width: 50,
           align: "center",
-          render: (text) => <>{text?.split(" ")[0]}</>,
+          render: (text) => <>{capitalizeWords(text?.split(" ")[0])}</>,
         },
         {
           title: "Carat (gram)",
@@ -98,12 +105,12 @@ function Tables() {
         },
 
         {
-          title: "Amount",
+          title: "Rate",
           // width: 10,
           align: "center",
           children: [
             {
-              title: "Sales",
+              title: "Sale",
               dataIndex: "sale_amount",
               key: "sale_amount",
               // width: 10,

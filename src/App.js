@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import useInterval from "./useInterval";
 import Tables from "./Tables";
-import moment from "moment"
+import moment from "moment";
+import {Row,Space} from "antd"
 function App() {
   const [data, setData] = useState([]);
   function test() {
@@ -40,7 +41,6 @@ function App() {
     // Return the number
     return num;
   }
-
   return (
     <div className="App">
       <div className="marquee">
@@ -48,28 +48,28 @@ function App() {
         <marquee className="marq" title="marquee">
           <div className="tab">
             <span className="text">
-              Sales Amount
+              Sale Rate
             </span>
             <span className="text1">
-              Purchase Amount
+              Purchase Rate
             </span>
           </div>
           {data?.map((products) => {
             return (
               <div className="tab">
                 <span className="text">
-                  {products.product_name == "Silver 0" ? "Silver Article" : products.product_name == "silver 100" ? "Silver Bar" : products.product_name}T = {products.sale_amount == null ? "-" : <>₹ {addZeroes(products.sale_amount)}</>}
+                  {products.product_name === "Silver 0" ? "Silver Article" : products.product_name === "silver 100" ? "Silver Bar" : <>{products.product_name}T</>} = {products.sale_amount == null ? "-" : <>₹ {addZeroes(products.sale_amount)}</>}
                 </span>
                 <span className="text1">
-                  {products.product_name == "Silver 0" ? "Silver Article" : products.product_name == "silver 100" ? "Silver Bar" : products.product_name}T  = {products.purchase_amount == null ? "-" : <>₹ {addZeroes(products.purchase_amount)}</>}
+                  {products.product_name === "Silver 0" ? "Silver Article" : products.product_name === "silver 100" ? "Silver Bar" : <>{products.product_name}T</>}  = {products.purchase_amount == null ? "-" : <>₹ {addZeroes(products.purchase_amount)}</>}
                 </span>
               </div>
             );
           })}
         </marquee>
-      </div>
-      <div style={{float:"right",marginRight:"5px",marginBottom:"5px",fontWeight:"bold"}}>
-          {moment(data[0]?.updated).format("yyyy-MM-DD hh:mm:ss A")}
+      </div> 
+      <div style={{ float: "right", marginRight: "5px", marginBottom: "5px", fontWeight: "bold" }}>
+        {moment(data[0]?.updated).format("yyyy-MM-DD hh:mm:ss A")}
       </div>
       <Tables />
     </div>
